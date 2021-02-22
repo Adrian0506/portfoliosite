@@ -1,351 +1,296 @@
-import React from 'react'
-import Axios from 'axios';
-import Review from './review.jsx';
-import Mentions from './Mentions.jsx'
-import Images from './Images.jsx'
-import Star from './Star.jsx'
-import styled from 'styled-components'
-import WriteReview from './WriteReview.jsx'
+import React from 'react';
+import styled from "styled-components";
+import NavBar from './Navbar.jsx'
+import anime from 'animejs'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+
+function App() {
+  return (
+    <Apps>
+     <Container>
+       <NavBar/>
+       <h1 className = 'test'>About me </h1>
+       <BoardContainer>
+       <Card2 className = 'left'><Title>Adrian</Title></Card2>
+       <Right className = 'Right' >
+      <Title>Let's work together.</Title>
+         </Right>
+       <Bottom className = 'Bottom'>
+       <Image src = './github.png' href = 'www.google.com'className = 'contact'/>
+       <Image src = './email.png' className = 'contact'/>
+       <Image src = './linkedin.png' className = 'contact'/>
+       <Image src = './google.png' className = 'contact'/>
+      </Bottom>
+
+       </BoardContainer>
+     </Container>
+     <Projects>Projects</Projects>
+ <CardContainer>
+    <CardHolder className = 'animateCard'>
+      <CardItem>
+      <div className="card_image"><img src="https://picsum.photos/500/300/?image=17"/></div>
+         <CardContent>
+         <CardTitle>Covid Tracker</CardTitle>
+         <CardText>I made a covid tracker using react native. Users can track cases based on there state and also save a location they favor. There is a graph that shows daily increase or decrease in cases.</CardText>
+         <CardButton>Code</CardButton>
+         </CardContent>
+      </CardItem>
+      </CardHolder>
+
+      <CardHolder className = 'animateCard'>
+      <CardItem>
+      <div className="card_image"><img src="./amazon.png"/></div>
+         <CardContent>
+         <CardTitle>Congo Prime</CardTitle>
+         <CardText>I made a covid tracker using react native. Users can track cases based on there state and also save a location they favor. There is a graph that shows daily increase or decrease in cases.</CardText>
+         <CardButton>Code</CardButton>
+         </CardContent>
+      </CardItem>
+      </CardHolder>
 
 
-const MainDiv = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
+      <CardHolder className = 'animateCard'>
+      <CardItem>
+      <div className="card_image"><img src="./amazon.png"/></div>
+         <CardContent>
+         <CardTitle>Congo Prime</CardTitle>
+         <CardText>I made a covid tracker using react native. Users can track cases based on there state and also save a location they favor. There is a graph that shows daily increase or decrease in cases.</CardText>
+         <CardButton>Code</CardButton>
+         </CardContent>
+      </CardItem>
+      </CardHolder>
+
+</CardContainer>
+    </Apps>
+  );
+}
+
+
+setTimeout(() => {
+  anime({
+    targets: document.querySelectorAll('.ani'),
+    translateY: 100,
+    opacity: [0, 1],
+    delay: anime.stagger(100)
+  })
+
+ // Idea element comes from top side and left
+  anime({
+    targets: document.querySelector('.test'),
+    translateY: 100,
+    opacity: [0,1],
+    easing: 'easeInOutQuad',
+    duration: 1200
+  })
+
+  anime({
+    targets: document.querySelector('.left'),
+    translateX: 20,
+    easing: 'easeInOutQuad',
+    opacity: [0,1],
+    duration: 800
+  })
+
+
+  anime({
+    targets: document.querySelector('.Bottom'),
+    translateY: -90,
+    easing: 'easeInOutQuad',
+    opacity: [0,1],
+    duration: 800
+  })
+
+  anime({
+    targets: document.querySelector('.Right'),
+    translateX: -60,
+    easing: 'easeInOutQuad',
+    opacity: [0,1],
+    duration: 800
+  })
+
+  }, 1000)
+
+
+
+  setTimeout( () => {
+    anime({
+      targets: document.querySelectorAll('.contact'),
+      translateX:20,
+      delay: anime.stagger(200),
+      opacity: [0, 1]
+    })
+
+ /* anime({
+    targets: document.querySelectorAll('.animateCard'),
+    delay: anime.stagger(300),
+    opacity: [0,1],
+    translateX: 100
+  }) */
+
+
+  }, 2200)
+
+
+ const CardText = styled.p`
+ color: #ffffff;
+ font-size: 0.875rem;
+ line-height: 1.5;
+ margin-bottom: 1.25rem;
+ font-weight: 400;
 
  `
-const ReviewComp = styled.div`
 
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  min-inline-size: max-content
+ const CardButton = styled.button`
+ color: #ffffff;
+ padding: 0.8rem;
+ font-size: 14px;
+ text-transform: uppercase;
+ border-radius: 4px;
+ font-weight: 400;
+ display: block;
+ width: 100%;
+ cursor: pointer;
+ border: 1px solid rgba(255, 255, 255, 0.2);
+ background: transparent;
+ `
+
+
+const CardTitle = styled.h2`
+color: #ffffff;
+font-size: 1.1rem;
+font-weight: 700;
+letter-spacing: 1px;
+text-transform: capitalize;
+margin: 0px;
+
+`
+ const CardHolder = styled.li`
+  width: 20%;
+ `
+
+const CardContent = styled.div`
+
+  padding: 1rem;
+  background: linear-gradient(to bottom left, #7b7fda 40%, #7b7fda 100%);
+
 
 `
 
-const StarComp = styled.div`
-display: flex;
-flex-direction: column;
-border-bottom: 2px solid #e7e7e7;
-`
+  const Image = styled.img`
+  position: relative;
+  top:5%;
+   width: 5vw;
+   height: 5vw;
+   opacity: 0;
+   cursor: grab;
+   `
+  const Projects = styled.h1`
+    font-size: 2vw;
+  `
+  const FlexContainer = styled.div`
+   display: flex;
+   flex-direction: column;
+  `
 
+  const Title = styled.div`
+   color: #7b7fda;
+   font-size:2vw;
+   font-weight: bold;
+  `
+  const Card2 = styled.div`
 
-const AmazonText = styled.h1`
-font-family: 'Roboto', sans-serif;
-font-size: 20px;
-`
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 18%;
+    border-radius: 25px;
+    background-color: white;
+    height: 30vw;
+    opacity: 0;
+    box-shadow: 1px 2px 5px black;
 
-
-
-const Pagination = styled.div`
-  display: inline-block;
 
   `
 
-const InsideDiv = styled.div`
-color: black;
-float: left;
-padding: 8px 16px;
-text-decoration: none
+  const CardItem = styled.ul`
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  `
+  const CardContainer = styled.div `
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  `
+  const Right = styled.div`
+
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 35%;
+  border-radius: 25px;
+  background-color: white;
+  height: 30vw;
+  opacity: 0;
+  box-shadow: 1px 2px 5px black;
 
 
 `
 
-const AmazonMore = styled.h1`
 
-font-family: 'Roboto', sans-serif;
-font-size: 15px;
-font-weight: 500;
-color: #007185;
-cursor: grab;
-
-  &&:hover   {
-    text-decoration: underline;
-    }
-
+  const Bottom = styled.div`
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 54%;
+  gap: 7rem;
+  border-radius: 25px;
+  background-color: white;
+  height: 6vw;
+  opacity: 0;
+  box-shadow: 1px 2px 5px black;
 
 
 `
 
-const PagNum = styled.h1`
+const Container = styled.div`
+  background: #7b7fda;
+  height: 100rem;
+`;
 
-position: relative;
-color: #007185;
-font-family: 'Roboto', sans-serif;
-float: left;
-font-size: 15px;
-padding: 8px 16px;
-text-decoration: none;
-cursor: grab;
-
-&&:hover {
-      text-decoration: underline;
-
-}
-
-
-&&:active {
-  background-color: #00464F;
-  color: #D7E8EA;
-}
-
-`
-const TestComp = styled.div`
-display: flex;
-flex-flow:row wrap;
-flex-direction: column
+const Apps = styled.div`
+text-align: center;
 
 `
 
 
-const MetionsBlock = styled.div`
-width:50rem;
-display: flex;
-
-`
-const ImageFlex = styled.div`
-display: flex;
-flex-direction: column;
-`
-
-
-const Selector = styled.select`
-width: 10%;
-
-`
-
-const CurrentMetion = styled.h1`
-font-family: 'Roboto', sans-serif;
-font-weight: 500;
-font-size: 20px;
-`
-const FlexMetion = styled.div`
+const BoardContainer = styled.div`
+position: relative; /* or absolute */
+  top: 10%;
+  left:22%;
 display: flex;
 flex-direction: row;
-
-
+flex: auto;
+margin-left: auto;
+margin-right: auto;
+flex-flow: row wrap;
+gap:100px;
+flex-wrap:wrap;
 `
-
-const ClearMetion = styled.h1`
-postion: relative;
- font-family: 'Roboto', sans-serif;
- font-weight: 500;
- font-size: 20px;
- color: #007185;
- left: 2rem; !!important
- cursor:grab;
-
-
-
-  &&:hover {
-    text-decoration: underline;
-
-  }
-
-
+const LetterContainer = styled.div`
+position: relative;
+color: white;
+left: 50rem;
+font-size: 3vw;
+top: 5rem;
+display: flex;
 `
-
-class App extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      reviews: [],
-      showingReviews: [],
-      metionedReview: '',
-      paginatedArray: [],
-      currentSelector: 'top',
-      currentLength: 0,
-      currentPage: 1,
-
-    }
-  }
-
-  // Nested arrays for pagination
-  // Nest 5 reviews into a array.
-
-
-
-  changeMetionedReview(query) {
-  Axios('/reviews').then(reviews => {
-
-   this.setState({
-     showingReviews: reviews.data
-   })
-
-
-   this.setState({
-    metionedReview: query
-  } )
-
-  console.log('test')
-  });
-
-
-
-
-  }
-
-  componentDidMount() {
-
-    Axios('/reviews').then(reviews => {
-      if (this.state.currentSelector === 'top') {
-        reviews.data.sort((a, b) => {
-          return a.foundHelpful - b.foundHelpful
-        });
-        reviews.data.reverse()
-      }
-
-      this.setState({
-        reviews: reviews.data
-      })
-
-
-
-
-      let paginatedArrays = []
-      let currentArray = [];
-      for (let i = 0; i < this.state.reviews.length; i++) {
-
-        if (currentArray.length >= 4) {
-          paginatedArrays.push(currentArray)
-          currentArray = [];
-        }
-        currentArray.push(this.state.reviews[i])
-
-      }
-
-      if (currentArray.length !== 0) {
-        paginatedArrays.push(currentArray)
-      }
-      this.setState({
-        showingReviews: paginatedArrays[1]
-      })
-
-      this.setState({
-        paginatedArray: paginatedArrays
-      })
-    })
-
-    // Get 5 reviews by splicing.
-    // Everytime load more is called slice from the array and push it into the showing array.
-    // render pages by how many nested arrays are in the nested array.
-    // make a variable that tracks what page is clicked
-
-
-  }
-
-
-  changePage(val) {
-
-    this.setState({
-      showingReviews: this.state.paginatedArray[val]
-    })
-
-
-    this.setState({
-      currentPage: val
-    })
-
-
-
-  }
-
-
-
- resetSearch () {
-   this.setState({
-     metionedReview: ''
-   })
-
-   this.componentDidMount();
- }
-
-
-
-  changeValue(e) {
-    console.log(e.target.value, 'FROM CHANGE VALUE');
-    this.setState({
-      currentSelector: e.target.value
-    })
-    this.componentDidMount();
-
-
-  }
-
-
-
-  render() {
-
-    let doesInclude = this.state.metionedReview
-    let pagNum = 0;
-    let currNum = 0;
-    let currentReviews = 0;
-    let newPaginatedArray =  this.state.paginatedArray.slice(0, this.state.currentPage + 2)
-
-    console.log(newPaginatedArray)
-
-
-    return (
-        <ReviewComp>
-
-          <StarComp>
-            <Star props={this.state.reviews} />
-            <WriteReview />
-          </StarComp>
-          <TestComp>
-            <ImageFlex>
-              <AmazonText>Customer images</AmazonText>
-              <Images />
-              <AmazonMore>See all customer images</AmazonMore>
-            </ImageFlex>
-            <AmazonText>Read Reviews that mention</AmazonText>
-            <MetionsBlock>
-              <Mentions changeReview={this.changeMetionedReview.bind(this)} />
-            </MetionsBlock>
-            <Selector name="cars" id="cars" onChange={this.changeValue.bind(this)}>
-              <option value="top">Top reviews</option>
-              <option value='timed'>Most recent</option>
-              </Selector>
-              <AmazonText>Top reviews from the United States.</AmazonText>
-              { this.state.metionedReview !== '' ? <FlexMetion><CurrentMetion>Showing reviews with "{this.state.metionedReview}"</CurrentMetion> <ClearMetion onClick = {this.resetSearch.bind(this)}> Clear filter.</ClearMetion></FlexMetion> : null}
-
-
-            {this.state.showingReviews.map(item => {
-               if (item.review.includes(doesInclude)) {
-                 currentReviews++;
-               }
-              return item.review.includes(doesInclude) ? <Review props={item} />: null
-            })
-           }
-
-            <Pagination>
-
-
-              {newPaginatedArray.map(item => {
-                if (currNum === 0) {
-                  pagNum = 0
-                } else {
-                  pagNum++;
-                }
-                currNum++;
-                let AssignedVariable = pagNum
-                return pagNum !== 0 ? <PagNum onClick={() => this.changePage(AssignedVariable)}>{pagNum}</PagNum> : null
-                // onclick we change the showing to the paginated array clicked.
-              })
-
-              }
-            </Pagination>
-          </TestComp>
-        </ReviewComp>
-    )
-  }
-
-
-}
-
 
 export default App;

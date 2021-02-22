@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const Reviews = require('../database/Review.js');
 const cors = require('cors');
 const path = require('path');
 app.use(cors());
@@ -16,15 +15,6 @@ app.get('/', (req,res) => {
 })
 
 
-app.get('/reviews', async (req, res) => {
-  console.log('POST request recieved.')
-
-  const data = await Reviews.find({})
-
-  res.send(data);
-
-
-});
 
 
 app.listen(PORT, () => {
