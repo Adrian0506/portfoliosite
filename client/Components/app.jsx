@@ -4,7 +4,8 @@ import NavBar from './Navbar.jsx'
 import anime from 'animejs'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-
+import About from './About.jsx'
+import Contact from './Contact.jsx'
 function App() {
   return (
     <Apps>
@@ -12,12 +13,19 @@ function App() {
        <NavBar/>
        <h1 className = 'test'>About me </h1>
        <BoardContainer>
-       <Card2 className = 'left'><Title>Adrian</Title></Card2>
+       <Card2 className = 'left'>
+         <Title>Adrian</Title>
+       <ProfileImage src = "avatar.png"/>
+       <ProfileText>
+       I have been coding ever since I was 16. Ever since I wrote my first few lines of code I instantly fell in love with it and knew I wanted my career based off coding.
+       </ProfileText>
+       </Card2>
        <Right className = 'Right' >
       <Title>Let's work together.</Title>
+      <ContactMe>Contact</ContactMe>
          </Right>
        <Bottom className = 'Bottom'>
-       <Image src = './github.png' href = 'www.google.com'className = 'contact'/>
+       <Image src = './github.png' href = 'www.google.com'className = 'contact' />
        <Image src = './email.png' className = 'contact'/>
        <Image src = './linkedin.png' className = 'contact'/>
        <Image src = './google.png' className = 'contact'/>
@@ -29,22 +37,26 @@ function App() {
  <CardContainer>
     <CardHolder className = 'animateCard'>
       <CardItem>
-      <div className="card_image"><img src="https://picsum.photos/500/300/?image=17"/></div>
+      <div className="card_image"><img className = 'imageResize' src="./covid.png"/></div>
          <CardContent>
          <CardTitle>Covid Tracker</CardTitle>
          <CardText>I made a covid tracker using react native. Users can track cases based on there state and also save a location they favor. There is a graph that shows daily increase or decrease in cases.</CardText>
          <CardButton>Code</CardButton>
+         <CardButton>Demo</CardButton>
+
          </CardContent>
       </CardItem>
       </CardHolder>
 
       <CardHolder className = 'animateCard'>
       <CardItem>
-      <div className="card_image"><img src="./amazon.png"/></div>
+      <div className="card_image"><img className = 'imageResize' src="./amazon.png"/></div>
          <CardContent>
          <CardTitle>Congo Prime</CardTitle>
-         <CardText>I made a covid tracker using react native. Users can track cases based on there state and also save a location they favor. There is a graph that shows daily increase or decrease in cases.</CardText>
+         <CardText>A clone of a popular e-commerence site review section. This was made with a group. I was assigned the review sections and in the end we connected all our modules together.</CardText>
          <CardButton>Code</CardButton>
+         <CardButton>Demo</CardButton>
+
          </CardContent>
       </CardItem>
       </CardHolder>
@@ -52,16 +64,20 @@ function App() {
 
       <CardHolder className = 'animateCard'>
       <CardItem>
-      <div className="card_image"><img src="./amazon.png"/></div>
+      <div className="card_image"><img className = 'imageResize' src="./newrelic.png"/></div>
          <CardContent>
-         <CardTitle>Congo Prime</CardTitle>
-         <CardText>I made a covid tracker using react native. Users can track cases based on there state and also save a location they favor. There is a graph that shows daily increase or decrease in cases.</CardText>
+         <CardTitle>Scalify</CardTitle>
+         <CardText>I horizonatlly scaled a website that had a database with 10 million records. Used nginx to load balance users. Stress tested website and had a 99% uptime with over 1000 users per second. </CardText>
          <CardButton>Code</CardButton>
+         <CardButton>Demo</CardButton>
          </CardContent>
       </CardItem>
       </CardHolder>
 
 </CardContainer>
+
+<About></About>
+<Contact></Contact>
     </Apps>
   );
 }
@@ -132,6 +148,22 @@ setTimeout(() => {
   }, 2200)
 
 
+ const ContactMe = styled.button`
+
+ width: 15px;
+ height: 10px;
+ position: absolute;
+ transform: translateX(60px);
+ opacity: 0;
+ -webkit-transition: all .25s cubic-bezier(.14, .59, 1, 1.01);
+ transition: all .15s cubic-bezier(.14, .59, 1, 1.01);
+ margin: 0;
+ padding: 0 5px;
+ `
+ const ProfileText = styled.h1`
+  font-size: 20px;
+
+ `
  const CardText = styled.p`
  color: #ffffff;
  font-size: 0.875rem;
@@ -145,7 +177,6 @@ setTimeout(() => {
  color: #ffffff;
  padding: 0.8rem;
  font-size: 14px;
- text-transform: uppercase;
  border-radius: 4px;
  font-weight: 400;
  display: block;
@@ -176,7 +207,10 @@ const CardContent = styled.div`
 
 
 `
-
+  const ProfileImage = styled.img`
+   width: 200px;
+   border-radius: 50%;
+  `
   const Image = styled.img`
   position: relative;
   top:5%;
@@ -244,6 +278,8 @@ const CardContent = styled.div`
 
 
   const Bottom = styled.div`
+  position: relative;
+  left: 1rem;
   justify-content: center;
   display: flex;
   flex-direction: row;
