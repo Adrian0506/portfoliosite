@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import About from './About.jsx'
 import Contact from './Contact.jsx'
+import { Link } from 'react-router-dom';
 function App() {
   return (
     <Apps>
@@ -17,7 +18,8 @@ function App() {
          <Title>Adrian</Title>
        <ProfileImage src = "avatar.png"/>
        <ProfileText>
-       I have been coding ever since I was 16. Ever since I wrote my first few lines of code I instantly fell in love with it and knew I wanted my career based off coding.
+       <i>I have been coding ever since I was 16. Ever since I wrote my first few lines of code I instantly fell in love with it and knew I wanted my career based off coding.
+       </i>
        </ProfileText>
        </Card2>
        <Right className = 'Right' >
@@ -33,7 +35,17 @@ function App() {
 
        </BoardContainer>
      </Container>
-     <Projects>Projects</Projects>
+     <Projects>
+       <ProjectText className = 'animateProject'>P</ProjectText>
+       <ProjectText className = 'animateProject'>r</ProjectText>
+       <ProjectText className = 'animateProject'>o</ProjectText>
+     <ProjectText className = 'animateProject'>j</ProjectText>
+     <ProjectText className = 'animateProject'>e</ProjectText>
+     <ProjectText className = 'animateProject'>c</ProjectText>
+     <ProjectText className = 'animateProject'>t</ProjectText>
+     <ProjectText className = 'animateProject'>s</ProjectText>
+     </Projects>
+
  <CardContainer>
     <CardHolder className = 'animateCard'>
       <CardItem>
@@ -41,7 +53,10 @@ function App() {
          <CardContent>
          <CardTitle>Covid Tracker</CardTitle>
          <CardText>I made a covid tracker using react native. Users can track cases based on there state and also save a location they favor. There is a graph that shows daily increase or decrease in cases.</CardText>
-         <CardButton>Code</CardButton>
+         <CardButton onClick = {(e) => {
+           e.preventDefault()
+           window.open('https://github.com/Adrian0506/Covid-Tracker-React-Native', '_blank')
+         }}>Code</CardButton>
          <CardButton>Demo</CardButton>
 
          </CardContent>
@@ -54,7 +69,10 @@ function App() {
          <CardContent>
          <CardTitle>Congo Prime</CardTitle>
          <CardText>A clone of a popular e-commerence site review section. This was made with a group. I was assigned the review sections and in the end we connected all our modules together.</CardText>
-         <CardButton>Code</CardButton>
+         <CardButton onClick = {(e) => {
+              e.preventDefault()
+              window.open('https://github.com/Team-10-Thors-Hammer/adrian-services', '_blank')
+         }}>Code</CardButton>
          <CardButton>Demo</CardButton>
 
          </CardContent>
@@ -67,7 +85,7 @@ function App() {
       <div className="card_image"><img className = 'imageResize' src="./newrelic.png"/></div>
          <CardContent>
          <CardTitle>Scalify</CardTitle>
-         <CardText>I horizonatlly scaled a website that had a database with 10 million records. Used nginx to load balance users. Stress tested website and had a 99% uptime with over 1000 users per second. </CardText>
+         <CardText>Horizonatlly scaled a website that included database with 10 million records. Used nginx to load balance users. Stress tested website and had a 0% error rate with over 1000 requests P/S. </CardText>
          <CardButton>Code</CardButton>
          <CardButton>Demo</CardButton>
          </CardContent>
@@ -81,6 +99,9 @@ function App() {
     </Apps>
   );
 }
+
+
+
 
 
 setTimeout(() => {
@@ -137,14 +158,18 @@ setTimeout(() => {
       opacity: [0, 1]
     })
 
- /* anime({
+    anime({
     targets: document.querySelectorAll('.animateCard'),
     delay: anime.stagger(300),
-    opacity: [0,1],
-    translateX: 100
-  }) */
+    opacity: [0,1]
+  })
 
-
+  anime({
+    targets: document.querySelectorAll('.animateProject'),
+    delay: anime.stagger(200),
+    translateX: 20,
+    opacity: [0,1]
+  })
   }, 2200)
 
 
@@ -219,8 +244,14 @@ const CardContent = styled.div`
    opacity: 0;
    cursor: grab;
    `
-  const Projects = styled.h1`
-    font-size: 2vw;
+  const Projects = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    `
+
+  const ProjectText = styled.h1`
+  font-size: 3vw;
   `
   const FlexContainer = styled.div`
    display: flex;
@@ -259,7 +290,7 @@ const CardContent = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     list-style: none;
-    margin: 0;
+    margin: 0 5vw 5vw 5vw;
     padding: 0;
   `
   const Right = styled.div`
