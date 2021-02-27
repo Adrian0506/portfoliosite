@@ -10,20 +10,25 @@ const About = () => {
     <Skill><SkillImg src = './typescript.png'></SkillImg></Skill>
     <Skill><SkillImg src = './react.png'></SkillImg></Skill>
     <Skill><SkillImg src = './nodejs.png'></SkillImg></Skill>
-    <Skill><SkillImg src = './nodejs.png'></SkillImg></Skill>
+    <Skill><SkillImg src = './database.png'></SkillImg></Skill>
    </SkillsContainer>
 
    <SkillsContainer>
-    <Skill><SkillImg src = './javascript.png'></SkillImg></Skill>
-    <Skill><SkillImg src = './typescript.png'></SkillImg></Skill>
-    <Skill><SkillImg src = './react.png'></SkillImg></Skill>
-    <Skill><SkillImg src = './nodejs.png'></SkillImg></Skill>
-    <Skill><SkillImg src = './nodejs.png'></SkillImg></Skill>
+    <Skill><SkillImg src = './jquery.png'></SkillImg></Skill>
+    <Skill><SkillImg src = './webpack.png'></SkillImg></Skill>
+    <Skill><SkillImg src = './python.png'></SkillImg></Skill>
+    <Skill><SkillImg src = './mongodb.png'></SkillImg></Skill>
    </SkillsContainer>
    </Container>
  )
 
 }
+
+
+window.addEventListener('scroll', function(e) {
+   var y = window.scrollY;
+   console.log(y)
+});
 
 const LineText = styled.h3`
 
@@ -49,8 +54,11 @@ display: block;
 margin-left: auto;
 margin-right: auto;
 width: 60%;
+position: relative;
+top: 20%;
 `
 const Skill = styled.div`
+position: relative;
 background-color: white;
 width: 5vw;
 border-radius: 50%;
@@ -86,7 +94,6 @@ font-size: 2vw
 `
 const Container = styled.div`
  display: flex;
- padding: 2rem 2rem 2rem 2rem;
  flex-direction: Column;
  background-color: #7b7fda;
 `

@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from "styled-components";
 
 
 
@@ -6,10 +7,22 @@ import React from 'react'
 const Contact = () => {
 
    return (
-     <h1>Contact me</h1>
+     <Container>
+     <Text>Contact me</Text>
+     </Container>
    )
 }
 
+
+
+const Text = styled.h1`
+color: white;
+`
+
+const Container = styled.div`
+
+background-color: #7b7fda;
+`
 
 
 

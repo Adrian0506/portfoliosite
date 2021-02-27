@@ -27,9 +27,15 @@ function App() {
       <ContactMe>Contact</ContactMe>
          </Right>
        <Bottom className = 'Bottom'>
-       <Image src = './github.png' href = 'www.google.com'className = 'contact' />
+       <Image src = './github.png' href = 'www.google.com'className = 'contact' onClick = {(e) => {
+         e.preventDefault()
+         window.open('http://github.com/adrian0506', '_blank')
+       }} />
        <Image src = './email.png' className = 'contact'/>
-       <Image src = './linkedin.png' className = 'contact'/>
+       <Image src = './linkedin.png' className = 'contact' onClick = {(e) => {
+         e.preventDefault()
+         window.open('https://www.linkedin.com/in/adrian-ibarra1/', '_blank')
+       }}/>
        <Image src = './google.png' className = 'contact'/>
       </Bottom>
 
@@ -57,7 +63,10 @@ function App() {
            e.preventDefault()
            window.open('https://github.com/Adrian0506/Covid-Tracker-React-Native', '_blank')
          }}>Code</CardButton>
-         <CardButton>Demo</CardButton>
+         <CardButton onClick = {(e) => {
+           e.preventDefault()
+           window.open('https://www.youtube.com/watch?v=ylCyLwZ31XY&feature=youtu.be', '_blank')
+         }}>Demo</CardButton>
 
          </CardContent>
       </CardItem>
@@ -73,7 +82,10 @@ function App() {
               e.preventDefault()
               window.open('https://github.com/Team-10-Thors-Hammer/adrian-services', '_blank')
          }}>Code</CardButton>
-         <CardButton>Demo</CardButton>
+         <CardButton onClick = {(e) => {
+           e.preventDefault()
+           window.open('https://adrian0506.github.io/Reviews-section/', '_blank')
+         }}>Demo</CardButton>
 
          </CardContent>
       </CardItem>
@@ -86,7 +98,10 @@ function App() {
          <CardContent>
          <CardTitle>Scalify</CardTitle>
          <CardText>Horizonatlly scaled a website that included database with 10 million records. Used nginx to load balance users. Stress tested website and had a 0% error rate with over 1000 requests P/S. </CardText>
-         <CardButton>Code</CardButton>
+         <CardButton onClick = {(e) => {
+           e.preventDefault()
+           window.open('https://github.com/Arrays-of-Sunshine/adrian-service', '_blank')
+         }}>Code</CardButton>
          <CardButton>Demo</CardButton>
          </CardContent>
       </CardItem>
@@ -158,19 +173,39 @@ setTimeout(() => {
       opacity: [0, 1]
     })
 
-    anime({
-    targets: document.querySelectorAll('.animateCard'),
-    delay: anime.stagger(300),
-    opacity: [0,1]
-  })
 
-  anime({
-    targets: document.querySelectorAll('.animateProject'),
-    delay: anime.stagger(200),
-    translateX: 20,
-    opacity: [0,1]
-  })
+
+
   }, 2200)
+
+
+  let played = false;
+  window.addEventListener('scroll', function(e) {
+    var y = window.scrollY;
+    console.log(y)
+
+    if (y >= 1400) {
+      if (played === false) {
+
+
+        anime({
+        targets: document.querySelectorAll('.animateProject'),
+        delay: anime.stagger(200),
+        width: ['1%', '2%'],
+        opacity: [0,1]
+      })
+
+
+      anime({
+        targets: document.querySelectorAll('.animateCard'),
+        delay: anime.stagger(500),
+        width: ['10%', '25%'],
+        opacity: [0,1]
+      })
+      played = true
+    }
+    }
+ });
 
 
  const ContactMe = styled.button`
@@ -301,6 +336,7 @@ const CardContent = styled.div`
   border-radius: 25px;
   background-color: white;
   height: 30vw;
+
   opacity: 0;
   box-shadow: 1px 2px 5px black;
 
@@ -328,7 +364,7 @@ const CardContent = styled.div`
 `
 
 const Container = styled.div`
-  background: #7b7fda;
+background: #7b7fda url(./tree.jpg) 50% 0 no-repeat fixed;
   height: 100rem;
 `;
 
